@@ -9,7 +9,6 @@ public record TaskDTO(
        Integer id,
        @NotBlank
        String title,
-       String description,
        @Null
        Date creation) {
 }

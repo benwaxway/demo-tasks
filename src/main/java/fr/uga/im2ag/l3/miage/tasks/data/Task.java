@@ -9,19 +9,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@Entity
 public class Task {
 
-       @Id
-       @GeneratedValue
        private Integer id;
 
-       @Column(nullable = false)
        private String title;
 
-       private String description;
 
-       @CreationTimestamp
        private LocalDateTime creation;
 
        public Integer getId() {
@@ -48,25 +42,18 @@ public class Task {
               this.creation = creation;
        }
 
-       public String getDescription() {
-              return description;
-       }
-
-       public void setDescription(String description) {
-              this.description = description;
-       }
 
        @Override
        public boolean equals(Object o) {
               if (this == o) return true;
               if (o == null || getClass() != o.getClass()) return false;
               Task task = (Task) o;
-              return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(creation, task.creation);
+              return Objects.equals(id, task.id) && Objects.equals(title, task.title)  && Objects.equals(creation, task.creation);
        }
 
        @Override
        public int hashCode() {
-              return Objects.hash(id, title, description, creation);
+              return Objects.hash(id, title, creation);
        }
 
        @Override
@@ -74,7 +61,6 @@ public class Task {
               return "Task{" +
                       "id=" + id +
                       ", title='" + title + '\'' +
-                      ", description='" + description + '\'' +
                       ", creation=" + creation +
                       '}';
        }

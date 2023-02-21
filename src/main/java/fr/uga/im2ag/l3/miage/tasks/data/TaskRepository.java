@@ -6,22 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public class TaskRepository {
 
-    private final EntityManager entityManager;
-
-    @Autowired
-    public TaskRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     public Task save(Task task) {
-        entityManager.persist(task);
         return task;
     }
 
     public List<Task> loadAll() {
-        return entityManager.createQuery("from Task", Task.class).getResultList();
+        return null;
     }
 }
