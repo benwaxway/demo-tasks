@@ -13,6 +13,7 @@ public class TaskRepository {
         return task;
     }
 
+    @SuppressWarnings("unchecked")
     public List<Task> loadAll() {
         return null;
     }

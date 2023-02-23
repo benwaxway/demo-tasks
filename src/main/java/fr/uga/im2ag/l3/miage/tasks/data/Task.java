@@ -1,68 +1,116 @@
 package fr.uga.im2ag.l3.miage.tasks.data;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 public class Task {
 
-       private Integer id;
+    private Integer id;
 
-       private String title;
+    private String title;
 
+    private List<String> tags;
 
-       private LocalDateTime creation;
+    private Priority priority;
 
-       public Integer getId() {
-              return id;
-       }
+    private int order;
 
-       public void setId(Integer id) {
-              this.id = id;
-       }
+    private LocalDateTime creation;
 
-       public String getTitle() {
-              return title;
-       }
+    private LocalDateTime lastUpdate;
 
-       public void setTitle(String title) {
-              this.title = title;
-       }
+    private boolean active;
 
-       public LocalDateTime getCreation() {
-              return creation;
-       }
+    public Integer getId() {
+        return id;
+    }
 
-       public void setCreation(LocalDateTime creation) {
-              this.creation = creation;
-       }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    public String getTitle() {
+        return title;
+    }
 
-       @Override
-       public boolean equals(Object o) {
-              if (this == o) return true;
-              if (o == null || getClass() != o.getClass()) return false;
-              Task task = (Task) o;
-              return Objects.equals(id, task.id) && Objects.equals(title, task.title)  && Objects.equals(creation, task.creation);
-       }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-       @Override
-       public int hashCode() {
-              return Objects.hash(id, title, creation);
-       }
+    public List<String> getTags() {
+        return tags;
+    }
 
-       @Override
-       public String toString() {
-              return "Task{" +
-                      "id=" + id +
-                      ", title='" + title + '\'' +
-                      ", creation=" + creation +
-                      '}';
-       }
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    public LocalDateTime getCreation() {
+        return creation;
+    }
+
+    public void setCreation(LocalDateTime creation) {
+        this.creation = creation;
+    }
+
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return Objects.equals(title, task.title) && Objects.equals(tags, task.tags) && priority == task.priority && Objects.equals(order, task.order) && Objects.equals(creation, task.creation) && Objects.equals(lastUpdate, task.lastUpdate) && Objects.equals(active, task.active);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, tags, priority, order, creation, lastUpdate, active);
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", tags=" + tags +
+                ", priority=" + priority +
+                ", order=" + order +
+                ", creation=" + creation +
+                ", lastUpdate=" + lastUpdate +
+                ", active=" + active +
+                '}';
+    }
 }
 
