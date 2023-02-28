@@ -1,26 +1,45 @@
 package fr.uga.im2ag.l3.miage.tasks.data;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+@Entity
 public class Task {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
+    @Column(nullable = false, length = 100)
     private String title;
 
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> tags;
 
+    @Enumerated(EnumType.ORDINAL)
     private Priority priority;
 
+    @Column(name = "order_number")
     private int order;
 
+    @CreationTimestamp
     private LocalDateTime creation;
 
+    @UpdateTimestamp
     private LocalDateTime lastUpdate;
 
     private boolean active;
+
+    public enum Priority {
+        LOW,
+        MEDIUM,
+        HIGH
+    }
 
     public Integer getId() {
         return id;
@@ -112,5 +131,7 @@ public class Task {
                 ", active=" + active +
                 '}';
     }
+
+
 }
 
